@@ -45,21 +45,24 @@ function DrawerExample() {
                 <DrawerContent>
                     <DrawerCloseButton />
                     <DrawerHeader>Your Order</DrawerHeader>
-                    {cartItem ? (
-                        cartItem.map((item) => (
-                            <DrawerBody key={item.id} className='flex gap-4'>
-                                <div>
-                                    <p className='font-medium'>{item?.name}</p>
-                                    <p className='text-2xl font-bold'>${item?.price}</p>
-                                </div>
-                                <div>
-                                    <button className='bg-black text-sm text-white p-2 rounded-full'>Remove</button>
-                                </div>
-                            </DrawerBody>
-                        ))
-                    ) : (
-                        <p className='text-black'>Your cart is Empty</p>
-                    )}
+                    <div className='shadow-2xl'>
+                        {cartItem ? (
+                            cartItem.map((item) => (
+                                <DrawerBody key={item.id} className=' gap-4'>
+                                    <div className='flex gap-2' >
+                                        <p className='font-medium text-left'>{item?.name}</p>
+                                        <hr className='h-20 w-1 bg-gray-300' />
+                                        <p className='text-2xl font-bold m-auto'><span className='font-light'>price</span> ${item?.price}</p>
+                                    </div>
+
+                                    <button className='text-[white] mt-4 m-auto flex w-[50%] text-center items-center justify-center relative py-2 px-6 font-semibold rounded-[50px] overflow-hidden bg-black transition-all duration-400 ease-in-out shadow-lg hover:scale-105 hover:text-white hover:shadow-xl active:scale-90 before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-black before:to-blue-300 before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-[50px] hover:before:left-0'>Remove</button>
+
+                                </DrawerBody>
+                            ))
+                        ) : (
+                            <p className='text-black'>Your cart is Empty</p>
+                        )}
+                    </div>
 
                     <DrawerFooter>
                         <Button variant='outline' mr={3} onClick={onClose}>
