@@ -18,9 +18,10 @@ function DrawerExample() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
 
-    const { cartItem } = useCartStore(
+    const { cartItem, removeFromCart } = useCartStore(
         (state) => ({
             cartItem: state.cartItem,
+            removeFromCart: state.removeFromCart
         })
     );
     const { courses } = useCourseStore(
@@ -55,7 +56,13 @@ function DrawerExample() {
                                         <p className='text-2xl font-bold m-auto'><span className='font-light'>price</span> ${item?.price}</p>
                                     </div>
 
-                                    <button className='text-[white] mt-4 m-auto flex w-[50%] text-center items-center justify-center relative py-2 px-6 font-semibold rounded-[50px] overflow-hidden bg-black transition-all duration-400 ease-in-out shadow-lg hover:scale-105 hover:text-white hover:shadow-xl active:scale-90 before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-black before:to-blue-300 before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-[50px] hover:before:left-0'>Remove</button>
+                                    <button
+                                        onClick={() => removeFromCart(item.id)}
+                                        className='text-[white] mt-4 m-auto flex w-[50%] text-center items-center justify-center relative py-2 px-6 font-semibold rounded-[50px] overflow-hidden bg-black transition-all duration-400 ease-in-out shadow-lg hover:scale-105 hover:text-white hover:shadow-xl active:scale-90 before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-black before:to-blue-300 before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-[50px] hover:before:left-0'
+                                    >
+                                        Remove
+                                    </button>
+
 
                                 </DrawerBody>
                             ))
