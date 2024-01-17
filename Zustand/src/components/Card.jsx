@@ -10,7 +10,7 @@ function Card() {
     );
 
     return (
-        <div className='flex w-[100%] m-atuo items-center'>
+        <div className=' w-[40%] m-auto flex gap-10 items-center'>
             {courses.map((course, i) => {
                 return (
                     <div key={i} className="w-screen bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
