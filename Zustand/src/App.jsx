@@ -2,6 +2,7 @@ import './App.css'
 import Card from './components/Card'
 import ThemeBtn from './components/ThemeBtn'
 import CourseForm from './components/CourseForm'
+import Drawer from './components/Drawer'
 import { ThemeProvider } from './contexts/theme'
 import { useEffect, useState } from 'react'
 
@@ -30,20 +31,26 @@ function App() {
 
   return (
     <ThemeProvider value={{ themeMode, lightTheme, darkTheme }}>
-      <div className=' text-lg font-bold bg-black w-[50%] rounded-full m-auto p-4 text-white'>Welcome to CodeAcadmey</div>
-      <div className=' m-auto items-center justify-center flex mt-10'>
+      <div className=' text-lg font-bold bg-black w-[100%]  m-auto p-4 text-white'>
+
+        Welcome to CodeAcadmey
+      </div>
+      <div className='flex justify-end mt-4'>
+        <Drawer />
+      </div>
+      <div className=' m-auto shadow-xl p-5 rounded-full items-center justify-center flex mt-10'>
         <CourseForm />
       </div>
+
       <div className="flex flex-wrap min-h-screen items-center">
         <div className="w-full">
-          <div className="w-full max-w-sm mx-auto flex justify-end mb-4">
+          <div className=" ">
             {/* Themebtn */}
             <ThemeBtn />
           </div>
-
           <Card />
-          <div className=" flex w-[40%] mt-4 m-auto overflow-x-hidden">
-            {/* Cards */}
+          {/* <div className=" flex w-[40%] mt-4 m-auto overflow-x-hidden">
+            Cards
 
             <div className="w-screen bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <a href="/">
@@ -56,7 +63,7 @@ function App() {
                   </h5>
                 </a>
                 <div className="flex items-center mt-2.5 mb-5">
-                  {/* Your star SVG icons */}
+                  Your star SVG icons
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
@@ -70,7 +77,7 @@ function App() {
               </div>
             </div>
 
-          </div>
+          </div> */}
         </div>
       </div>
     </ThemeProvider>
