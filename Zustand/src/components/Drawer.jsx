@@ -31,6 +31,10 @@ function DrawerExample() {
         })
     );
 
+    // Calculate total amount
+    const totalAmount = cartItem.reduce((acc, item) => acc + item.price, 0);
+
+
     return (
         <>
             <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
@@ -46,11 +50,12 @@ function DrawerExample() {
                 <DrawerContent>
                     <DrawerCloseButton />
                     <DrawerHeader>Your Order</DrawerHeader>
+                    <hr className=' w-full bg-slate-600' />
                     <div className='shadow-2xl'>
-                        {cartItem ? (
+                        {cartItem.length > 0 ? (
                             cartItem.map((item) => (
-                                <DrawerBody key={item.id} className=' gap-4'>
-                                    <div className='flex gap-2' >
+                                <DrawerBody key={item.id} className='gap-4'>
+                                    <div className='flex gap-2'>
                                         <p className='font-medium text-left'>{item?.name}</p>
                                         <hr className='h-20 w-1 bg-gray-300' />
                                         <p className='text-2xl font-bold m-auto'><span className='font-light'>price</span> ${item?.price}</p>
@@ -62,16 +67,19 @@ function DrawerExample() {
                                     >
                                         Remove
                                     </button>
-
-
                                 </DrawerBody>
                             ))
                         ) : (
-                            <p className='text-black'>Your cart is Empty</p>
+                            <div className='text-black flex items-center justify-center font-semibold text-xl'>Your cart is Empty</div>
                         )}
                     </div>
 
-                    <DrawerFooter>
+
+                    <div className='flex gap-4 mt-4 bg-blue-200 text-center justify-center'>
+                        <p className='text-lg font-medium'>Total:</p>
+                        <p className='text-lg font-bold'>${totalAmount}</p>
+                    </div>
+                    <DrawerFooter className='mt-28'>
                         <Button variant='outline' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
