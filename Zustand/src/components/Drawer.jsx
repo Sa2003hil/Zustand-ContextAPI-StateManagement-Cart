@@ -10,7 +10,6 @@ import {
 
 import { Button, useDisclosure } from '@chakra-ui/react';
 import React from 'react';
-import { Input } from '@chakra-ui/react';
 import useCartStore from '../app/cartStore';
 import useCourseStore from '../app/courseStore';
 
@@ -28,6 +27,7 @@ function DrawerExample() {
         (state) => ({
             courses: state.courses,
             removeCourse: state.removeCourse,
+            addPrice: state.price
         })
     );
 
