@@ -10,6 +10,7 @@ import {
 
 import { Button, useDisclosure } from '@chakra-ui/react';
 import React from 'react';
+import { Input } from '@chakra-ui/react';
 import useCartStore from '../app/cartStore';
 import useCourseStore from '../app/courseStore';
 
@@ -31,8 +32,16 @@ function DrawerExample() {
         })
     );
 
-    // Calculate total amount
-    const totalAmount = cartItem.reduce((acc, item) => acc + item.price, 0);
+
+    //  add the prices of each course and make a total amount
+    // Add the prices of each course and make a total amount
+    const totalAmount = cartItem.reduce((acc, curr) => {
+        // Ensure that curr.price is parsed as a number using parseFloat or Number
+        const priceToAdd = parseFloat(curr.price) || 0;
+
+        return acc + priceToAdd;
+    }, 0);
+
 
 
     return (
@@ -58,7 +67,7 @@ function DrawerExample() {
                                     <div className='flex gap-2'>
                                         <p className='font-medium text-left'>{item?.name}</p>
                                         <hr className='h-20 w-1 bg-gray-300' />
-                                        <p className='text-2xl font-bold m-auto'><span className='font-light'>price</span> ${item?.price}</p>
+                                        <p className='text-2xl font-bold m-auto'><span className='font-light'>price</span> ${item.price}</p>
                                     </div>
 
                                     <button
